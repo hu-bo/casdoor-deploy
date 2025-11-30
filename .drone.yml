@@ -15,8 +15,6 @@ steps:
       - pwd
       - mkdir -p /data/app/casdoor
       - cd /data/app/casdoor
-      - docker stop casdoor
-      - docker rm casdoor
       - docker-compose -f docker-compose.yml up -d
       - docker-compose logs
 
