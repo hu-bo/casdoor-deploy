@@ -9,5 +9,7 @@ services:
       - ./data:/data # Mount data directory
       - ./conf/app.conf:/conf/app.conf
     environment:
-      - RUNNING_IN_DOCKER=true
+      - RUNNING_IN_DOCKER: true
+      - DRIVER_NAME: sqlite3
+      - DATA_SOURCE_NAME: ./data/casdoor.db
     restart: unless-stopped
