@@ -1,11 +1,12 @@
-version: '3'
+version: "3"
 services:
   casdoor:
+    container_name: casdoor
     image: casbin/casdoor:latest
     ports:
       - "8000:8000"
     volumes:
-      - /data/app/casdoor/data:/data                # Mount data directory
+      - /data/app/casdoor/data:/data # Mount data directory
       - /data/app/casdoor/conf/app.conf:/conf/app.conf
     environment:
       - RUNNING_IN_DOCKER=true
