@@ -1,0 +1,22 @@
+kind: pipeline
+type: ssh
+name: deploy-nginx
+
+server:
+  host:
+    from_secret: CURRENT_HOST
+  user: root
+  password:
+    from_secret: SSH_PWD
+
+steps:
+  - name: build and deploy
+    commands:
+      - pwd
+      - mkdir -p /data/app/casdoor
+      - cd /data/app/casdoor
+      - docker stop casdoor
+      - docker rm casdoor
+      - docker-compose -f docker-compose.yml up -d
+      - docker-compose logs
+
