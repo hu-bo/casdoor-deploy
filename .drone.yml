@@ -14,6 +14,7 @@ steps:
     commands:
       - pwd
       - mkdir -p /data/app/casdoor
+      - cp -r ./* /data/app/casdoor
       - cd /data/app/casdoor
       - docker stop casdoor
       - docker rm casdoor
