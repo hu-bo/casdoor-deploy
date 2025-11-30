@@ -6,8 +6,8 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - /data/app/casdoor/data:/data # Mount data directory
-      - /data/app/casdoor/conf/app.conf:/conf/app.conf
+      - ./data:/data # Mount data directory
+      - ./conf/app.conf:/conf/app.conf
     environment:
       - RUNNING_IN_DOCKER=true
     restart: unless-stopped
