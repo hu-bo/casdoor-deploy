@@ -7,9 +7,13 @@ services:
       - "8000:8000"
     volumes:
       - ./data:/data # Mount data directory
-      - ./conf/app.conf:/conf/app.conf
+      - ./conf:/conf
+      - ./logs:/logs
     environment:
-      RUNNING_IN_DOCKER: true
-      DRIVER_NAME: sqlite3
-      DATA_SOURCE_NAME: ./data/casdoor.db
+      - GIN_MODE=release
     restart: unless-stopped
+    networks:
+      - shared_network
+networks:
+  shared_network:
+    driver: bridge
