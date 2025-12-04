@@ -11,6 +11,26 @@ services:
       - ./logs:/logs
     environment:
       - GIN_MODE=release
+      - DRIVER_NAME=postgres
+      - DATA_SOURCE_NAME=host=postgres port=5432 user=casdoor password=casdoorpw dbname=casdoor sslmode=disable
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    networks:
+      - shared_network
+  postgres:
+    image: postgres:15-alpine
+    container_name: casdoor-postgres
+    environment:
+      - POSTGRES_USER=casdoor
+      - POSTGRES_PASSWORD=casdoorpw.
+      - POSTGRES_DB=casdoor
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    command:
+      - "postgres"
+      - "-c"
+      - "shared_buffers=256MB"
     restart: unless-stopped
     networks:
       - shared_network
