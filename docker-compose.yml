@@ -11,8 +11,6 @@ services:
       - ./logs:/logs
     environment:
       - GIN_MODE=release
-      - DRIVER_NAME=postgres
-      - DATA_SOURCE_NAME=host=postgres port=5432 user=casdoor password=casdoorpw dbname=casdoor sslmode=disable
     restart: unless-stopped
     depends_on:
       - postgres
