@@ -4,7 +4,7 @@ services:
     container_name: casdoor
     image: casbin/casdoor:latest
     ports:
-      - "8000:8000"
+      - "8002:8002"
     volumes:
       - ./data:/data # Mount data directory
       - ./conf:/conf
