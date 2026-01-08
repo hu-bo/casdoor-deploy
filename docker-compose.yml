@@ -16,22 +16,22 @@ services:
       - postgres
     networks:
       - shared_network
-  postgres:
-    image: postgres:15-alpine
-    container_name: casdoor-postgres
-    environment:
-      - POSTGRES_USER=casdoor
-      - POSTGRES_PASSWORD=casdoorpw.
-      - POSTGRES_DB=casdoor
-    volumes:
-      - ./pgdata:/var/lib/postgresql/data
-    command:
-      - "postgres"
-      - "-c"
-      - "shared_buffers=256MB"
-    restart: unless-stopped
-    networks:
-      - shared_network
+  # postgres:
+  #   image: postgres:15-alpine
+  #   container_name: casdoor-postgres
+  #   environment:
+  #     - POSTGRES_USER=casdoor_user
+  #     - POSTGRES_PASSWORD=casdoorpw.
+  #     - POSTGRES_DB=casdoor
+  #   volumes:
+  #     - ./pgdata:/var/lib/postgresql/data
+  #   command:
+  #     - "postgres"
+  #     - "-c"
+  #     - "shared_buffers=256MB"
+  #   restart: unless-stopped
+  #   networks:
+  #     - shared_network
 networks:
   shared_network:
     external: true
