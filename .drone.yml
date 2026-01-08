@@ -17,7 +17,7 @@ steps:
       - cp -r ./* /data/app/casdoor
       - cd /data/app/casdoor
       - chown -R 1000:1000 /data/app/casdoor
-      - docker-compose -f docker-compose.yml up -d
+      - docker-compose -f docker-compose.yml up -d --force-recreate
       - sleep 3
       - docker-compose logs casdoor
 
